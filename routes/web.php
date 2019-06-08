@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix'=>'renter','middleware' => ['web','auth']], function(){
+    Route::resource('grills', 'GrillController')->except([
+        'update', 'destroy'
+    ]);
+    Route::get('grills/images/{name}', [
+        'as'         => 'grills.show_image',
+        'uses'       => 'GrillController@showImage'
+   ]);
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
