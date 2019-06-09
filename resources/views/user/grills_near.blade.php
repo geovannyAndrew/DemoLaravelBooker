@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row row-eq-height">
         <div class="col-md-12 align-baseline">
-            <h1>Grill Near me</h1>
+            <h1>Grills Near me</h1>
         </div>
     </div>
     <div class="row">

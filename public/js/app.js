@@ -976,7 +976,31 @@ window.Vue = __webpack_require__(34);
 Vue.component('example-component', __webpack_require__(38));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
+});
+
+var registerGrillScope = {
+
+    init: function init() {
+        this.getCoordinatesFromZipCode('150007');
+    },
+
+    getCoordinatesFromZipCode: function getCoordinatesFromZipCode(zipCode) {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'address': 'zipcode ' + zipCode }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                //Got result, center the map and put it out there
+                console.log(results[0].geometry.location.lat());
+                console.log(results[0].geometry.location.lng());
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+    }
+};
+
+$(document).ready(function () {
+    registerGrillScope.init();
 });
 
 /***/ }),

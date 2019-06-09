@@ -93,6 +93,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google_api_key') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

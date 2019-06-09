@@ -20,3 +20,27 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+const registerGrillScope = {
+
+    init: function(){
+        this.getCoordinatesFromZipCode('150007');
+    },
+
+    getCoordinatesFromZipCode: function(zipCode){
+        let geocoder = new google.maps.Geocoder();
+        geocoder.geocode( { 'address': 'zipcode '+zipCode}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              //Got result, center the map and put it out there
+              console.log(results[0].geometry.location.lat());
+              console.log(results[0].geometry.location.lng());
+            } else {
+              alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+    }
+}
+
+$(document).ready(function() {
+    registerGrillScope.init();
+});
