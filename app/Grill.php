@@ -9,7 +9,7 @@ class Grill extends Model
     protected $table = 'grills';
     protected $appends = ['url_image'];
 
-    public function user(){
+    public function renter(){
         return $this->belongsTo('App\User','user_id');
     }
 

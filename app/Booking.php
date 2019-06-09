@@ -18,6 +18,6 @@ class Booking extends Model
     }
 
     public function renter(){
-        return $this->grill->user;
+        return $this->grill->renter();
     }
 }

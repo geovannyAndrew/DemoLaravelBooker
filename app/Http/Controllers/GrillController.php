@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use File;
 use Response;
 use Storage;
+use Carbon\Carbon;
 
 class GrillController extends Controller
 {
@@ -101,10 +102,20 @@ class GrillController extends Controller
             'date' => 'required|date',
             'hours' => 'required|integer'
         ]);
-        dd($request);
+        
         $date = $request->date;
-        //$grill->bookings()->whereDate('reserved_for',)
+        $bookingsAlready = $grill->bookings()->whereDate('reserved_for',$date)->count();
+        if($bookingsAlready > 0){
+            return redirect()->route('grills.show',$id)->with('error','We are sorry, this grill is already booked for this date');
+        }
         $booking = new Booking();
+        $booking->user_id = $user->id;
+        $booking->grill_id = $grill->id;
+        $booking->reserved_for = $date;
+        $booking->hours = $request->hours;
+        $booking->save();
+        return redirect()->route('user.bookings')->with('success','Grill successfully booked');
+        
     }
 
     /**

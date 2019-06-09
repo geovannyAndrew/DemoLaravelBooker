@@ -7,6 +7,7 @@
             <h1>Grill #{{ $grill->id }}</h1>
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -24,7 +25,7 @@
                     <p>{{ $grill->description }}</p>
                     <br>
                     {!! Form::label('Renter', 'Renter:') !!}
-                    <h4>{{ $grill->user->name }}</h4>
+                    <h4>{{ $grill->renter->name }}</h4>
                     <br>
                 </div>
             </div>
@@ -48,11 +49,11 @@
                 {!! Form::open(['url' => route('user.grills.book',$grill->id),'method'=>'post','files' => false,'role' => 'form']) !!}
                     {!! Form::label('date', 'Book for:') !!}
                     <br>
-                    {!! Form::date('date', null,['min'=>date('Y-m-d')]) !!}
+                    {!! Form::date('date', null,['min'=>date('Y-m-d'),'required'=>'required']) !!}
                     <br>
                     {!! Form::label('hours', 'Hours:') !!}
                     <br>
-                    {!! Form::number('hours',null) !!}
+                    {!! Form::number('hours',null,['required'=>'required']) !!}
                     <br>
                     {!! Form::submit('Book',['class'=>'btn btn-success']) !!}
                 {!! Form::close() !!}

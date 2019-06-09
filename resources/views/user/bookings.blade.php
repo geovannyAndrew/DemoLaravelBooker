@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row row-eq-height">
         <div class="col-md-12 align-baseline">
-            <h1>Grill Bookings</h1>
+            <h1>My Bookings</h1>
         </div>
     </div>
     <div class="row">
@@ -14,8 +14,8 @@
                     <tr class="d-flex">
                         <th class="col-1">ID</th>
                         <th class="col-2">Grill ID/Model</th>
-                        <th class="col-3">Reserved by</th>
                         <th class="col-3">Reserved for/hours</th>
+                        <th class="col-3">Renter</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,8 +25,10 @@
                         <td class="col-2">
                             <a href="{{ route('grills.show',$booking->grill->id) }}">{{ $booking->grill->id }}<br>{{ $booking->grill->model }}</a>
                         </td>
-                        <td>{{ $booking->user->name }}</td>
-                        <td>{{ $booking->reserved_for }}<br>{{ $booking->hours }} Hours</td>
+                        <td class="col-3">{{ $booking->reserved_for }}<br>{{ $booking->hours }} Hours</td>
+                        <td class="col-3">
+                            {{ $booking->renter->name }}
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

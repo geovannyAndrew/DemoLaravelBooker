@@ -46,7 +46,7 @@ Route::group(['prefix'=>'user','middleware' => ['web','auth']], function(){
         ['as' => 'user.grills_near', 'uses'=>'GrillController@indexNear']
     );
     Route::get('bookings',
-        ['as' => 'user.bookings', 'uses'=>'GrillController@indexNear']
+        ['as' => 'user.bookings', 'uses'=>'BookingController@index']
     );
     Route::post('grills/{id}/book', [
         'as'         => 'user.grills.book',

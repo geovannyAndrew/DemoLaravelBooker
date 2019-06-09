@@ -25,7 +25,7 @@
                         <td class="col-1">{{ $grill->id }}</td>
                         <td class="col-2">{{ $grill->model }}</td>
                         <td class="col-3"><img src="{{ $grill->url_image }}" width="80" alt=""></td>
-                        <td class="col-3">{{ $grill->user->name }}</td>
+                        <td class="col-3">{{ $grill->renter->name }}</td>
                         <td class="col-3">
                             <a href="{{ route('grills.show',$grill->id)}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                         </td>

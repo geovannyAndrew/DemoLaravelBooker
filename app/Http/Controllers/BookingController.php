@@ -22,6 +22,7 @@ class BookingController extends Controller
         }
         else if($user->is_user){
             $bookings = $user->bookings;
+            return view('user.bookings')->with('bookings',$bookings);
         }
     }
 

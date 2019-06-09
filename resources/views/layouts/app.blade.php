@@ -84,7 +84,11 @@
                 </div>
             </div>
         </nav>
-
+        <div class="container">
+            <div class="row">
+                    @include('layouts.flash_message')
+            </div>
+        </div>
         @yield('content')
     </div>
 
