@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Grill;
+use App\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use File;
@@ -21,6 +22,12 @@ class GrillController extends Controller
         $renter = Auth::user();
         $grills = $renter->grills;
         return view('renter.grills')->with('grills',$grills);
+    }
+
+    public function indexNear(){
+        $user = Auth::user();
+        $grills = Grill::all();
+        return view('user.grills_near')->with('grills',$grills);
     }
 
     /**
@@ -57,7 +64,7 @@ class GrillController extends Controller
         $grill->image = $filename;
         $grill->user_id = $renter->id;
         $grill->save();
-        return redirect()->route('grills.index');
+        return redirect()->route('renter.grills.index');
     }
 
     /**
@@ -68,7 +75,10 @@ class GrillController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Auth::user();
+        $grill = Grill::find($id);
+        if(!isset($grill)) abort(404);
+        return view('show_grill')->with('grill',$grill)->with('user',$user);
     }
 
     public function showImage($name){
@@ -80,6 +90,21 @@ class GrillController extends Controller
 	    $response->header("Content-Type", $type);
 
 	    return $response;
+    }
+
+
+    public function book(Request $request, $id){
+        $user = Auth::user();
+        $grill = Grill::find($id);
+        if(!isset($grill)) abort(404);
+        $request->validate([
+            'date' => 'required|date',
+            'hours' => 'required|integer'
+        ]);
+        dd($request);
+        $date = $request->date;
+        //$grill->bookings()->whereDate('reserved_for',)
+        $booking = new Booking();
     }
 
     /**

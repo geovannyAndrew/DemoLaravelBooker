@@ -3,12 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row row-eq-height">
-        <div class="col-md-8 align-baseline">
-            <h1>Grills</h1>
-        </div>
-        <div class="col-md-4 text-right align-baseline">
-            <br>
-            <a href="{{ route('renter.grills.create') }}" class="btn btn-primary" role="button" aria-disabled="true">New Grill</a> 
+        <div class="col-md-12 align-baseline">
+            <h1>Grill Near me</h1>
         </div>
     </div>
     <div class="row">
@@ -18,9 +14,8 @@
                     <tr class="d-flex">
                         <th class="col-1">ID</th>
                         <th class="col-2">Model</th>
-                        <th class="col-3">Description</th>
                         <th class="col-3">Image</th>
-                        <th class="col-3">Zipcode</th>
+                        <th class="col-3">Renter</th>
                         <th class="col-3">View</th>
                     </tr>
                 </thead>
@@ -29,12 +24,11 @@
                     <tr class="d-flex">
                         <td class="col-1">{{ $grill->id }}</td>
                         <td class="col-2">{{ $grill->model }}</td>
-                        <td class="col-3">{{ $grill->description }}</td>
                         <td class="col-3"><img src="{{ $grill->url_image }}" width="80" alt=""></td>
-                        <td class="col-3">{{ $grill->zipcode }}</td>
+                        <td class="col-3">{{ $grill->user->name }}</td>
                         <td class="col-3">
-                                <a href="{{ route('grills.show',$grill->id)}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                            </td>
+                            <a href="{{ route('grills.show',$grill->id)}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

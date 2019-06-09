@@ -14,6 +14,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    @php
+        $authUser = Auth::user();
+    @endphp
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -29,14 +32,25 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Laravel') }} 
+                        @if(isset($authUser))
+                            {{ ucfirst($authUser->role->name) }}
+                        @endif
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @if(isset($authUser))
+                            @if($authUser->is_renter)
+                            <li><a href="{{ route('renter.bookings.index') }}">My Grill Bookings</a></li>
+                            <li><a href="{{ route('renter.grills.index') }}">My Grills</a></li>
+                            @elseif($authUser->is_user)
+                            <li><a href="{{ route('user.grills_near') }}">Grills Near</a></li>
+                            <li><a href="{{ route('user.bookings') }}">My Bookings</a></li>
+                            @endif
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -48,7 +62,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ $authUser->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">

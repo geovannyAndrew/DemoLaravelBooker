@@ -13,7 +13,7 @@ class CreateTableBookings extends Migration
      */
     public function up()
     {
-        Schema::create('grills', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->increments('id');
             $table->date('reserved_for');
             $table->integer('hours')->nullable();
@@ -35,6 +35,6 @@ class CreateTableBookings extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('bookings');
     }
 }
