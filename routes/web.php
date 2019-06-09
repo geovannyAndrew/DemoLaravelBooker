@@ -27,7 +27,7 @@ Route::group(['middleware' => ['web','auth']], function(){
    
 });
 
-Route::group(['prefix'=>'renter','middleware' => ['web','auth']], function(){
+Route::group(['prefix'=>'renter','middleware' => ['web','auth','renter']], function(){
     Route::get('/',function(){
         return redirect()->route('renter.bookings.index');
     });
@@ -44,7 +44,7 @@ Route::group(['prefix'=>'renter','middleware' => ['web','auth']], function(){
     ]);
 });
 
-Route::group(['prefix'=>'user','middleware' => ['web','auth']], function(){
+Route::group(['prefix'=>'user','middleware' => ['web','auth','user']], function(){
     Route::get('/',function(){
         return redirect()->route('user.grills_near');
     });
