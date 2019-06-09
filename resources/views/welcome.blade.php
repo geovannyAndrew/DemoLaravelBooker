@@ -68,26 +68,41 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                    {{--@auth
+                        
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
-                    @endauth
+                    @endauth--}}
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
+                    @auth
+                        {{ Auth::user()->role->name }}
+                    @else
                     {{ config('app.name') }}
+                    @endauth
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    @auth
+                        @php
+                            $user = Auth::user();    
+                        @endphp
+                       @if($user->is_renter)
+                            <a href="{{ route('renter.bookings.index') }}">My Grill Bookings</a>
+                            <a href="{{ route('renter.grills.index') }}">My Grills</a>
+                       @elseif($user->is_user)
+                            <a href="{{ route('user.grills_near') }}">Grills Near</a>
+                            <a href="{{ route('user.bookings') }}">My Bookings</a>
+                       @endif
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('register',['role_id'=>2]) }}">Register as User</a>
+                            <a href="{{ route('register',['role_id'=>3]) }}">Register as Renter</a>
+                    @endauth
                 </div>
             </div>
         </div>

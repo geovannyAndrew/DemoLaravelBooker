@@ -35,7 +35,7 @@ class LoginController extends Controller
             return route('user.grills_near');
         }
         else{
-            return '';
+            return '/';
         }
     }
 

@@ -5,6 +5,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+                @php
+                    $roleId = Request::get('role_id');
+                @endphp
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
@@ -20,7 +23,7 @@
                             <div class="col-md-6">
                                 <select name="role_id" class="form-control">
                                     @foreach ($roles as $role)
-                                    <option value="{{$role->id}}">{{ $role->name }}</option>
+                                    <option value="{{$role->id}}" {{ $roleId==$role->id ? 'selected' : '' }}>{{ $role->name }}</option>
                                     @endforeach
                                 </select>
 

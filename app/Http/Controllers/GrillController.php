@@ -39,9 +39,9 @@ class GrillController extends Controller
             $latitude = $g->lat;
             $longitude = $g->lon;
         }
-        //dd($latitude,$longitude);
         $user = Auth::user();
-        $grills = Grill::all();
+        $coordinates = ['latitude' => $latitude, 'longitude' => $longitude];
+        $grills = Grill::isWithinDistance($coordinates,10)->get();
         return view('user.grills_near')->with('grills',$grills);
     }
 

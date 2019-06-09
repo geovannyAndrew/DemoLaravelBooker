@@ -28,6 +28,9 @@ Route::group(['middleware' => ['web','auth']], function(){
 });
 
 Route::group(['prefix'=>'renter','middleware' => ['web','auth']], function(){
+    Route::get('/',function(){
+        return redirect()->route('renter.bookings.index');
+    });
     Route::resource('grills', 'GrillController',
         ['as' => 'renter']
     )->except([
@@ -42,6 +45,9 @@ Route::group(['prefix'=>'renter','middleware' => ['web','auth']], function(){
 });
 
 Route::group(['prefix'=>'user','middleware' => ['web','auth']], function(){
+    Route::get('/',function(){
+        return redirect()->route('user.grills_near');
+    });
     Route::get('grills_near',
         ['as' => 'user.grills_near', 'uses'=>'GrillController@indexNear']
     );

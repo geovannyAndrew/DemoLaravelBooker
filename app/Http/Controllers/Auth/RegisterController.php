@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,18 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    public function redirectTo(){
+        $user = Auth::user(); 
+        if($user->is_renter){
+            return route('renter.bookings.index');
+        }
+        else if($user->is_user){
+            return route('user.grills_near');
+        }
+        else{
+            return '/';
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -63,11 +75,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        //dd($data);
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'role_id'  => $data['role_id'],
         ]);
+        return $user;
     }
 }
