@@ -1,10 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.app',['name_page'=>'bb-grills-near'])
 
 @section('content')
 <div class="container">
     <div class="row row-eq-height">
-        <div class="col-md-12 align-baseline">
+        <div class="col-md-8 align-baseline">
             <h1>Grills Near me</h1>
+        </div>
+        <div class="col-md-4 text-right">
+            <button title="Update your position" id="button_update_location" class="btn"><i class="glyphicon glyphicon-screenshot"></i></button>
         </div>
     </div>
     <div class="row">

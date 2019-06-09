@@ -17,5 +17,9 @@
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "gasparesganga-jquery-loading-overlay": "^2.1.6",
+        "jquery-validation": "^1.19.0"
     }
 }

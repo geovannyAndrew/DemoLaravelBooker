@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.app',['name_page'=>'bb-create-grill'])
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Create a new Grill</h1>
+            <h1>Create a new Grill</h1> 
         </div>
     </div>
     <div class="row">
@@ -22,7 +22,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                {!! Form::open(['route' => 'renter.grills.store','method'=>'post','files' => true,'role' => 'form']) !!}
+                {!! Form::open(['route' => 'renter.grills.store','method'=>'post','files' => true,'role' => 'form','id'=>'form_create_grill']) !!}
                     {!! Form::label('model', 'Model:') !!}
                     {!! Form::text('model',null,['class'=>'form-control','required' => 'required']) !!}
                     <br>
@@ -36,7 +36,9 @@
                     <br>
                     {!! Form::textarea('description', null, ['class'=>'form-control','placeholder'=>'Enter a description here...','rows' => 3]) !!}
                     <br>
-                    {!! Form::submit('Save',['class'=>'btn btn-success']) !!}
+                    {{ Form::hidden('latitude', null,['id'=>'latitude','required' => 'required']) }}
+                    {{ Form::hidden('longitude', null,['id'=>'longitude','required' => 'required']) }}
+                    {!! Form::button('Save',['id'=>'button-submit','class'=>'btn btn-success']) !!}
                 {!! Form::close() !!}
                 </div>
             </div>

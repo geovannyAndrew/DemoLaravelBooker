@@ -25,7 +25,21 @@ class GrillController extends Controller
         return view('renter.grills')->with('grills',$grills);
     }
 
-    public function indexNear(){
+    public function indexNear(Request $request){
+        $location = $request->location;
+        $latitude = null;
+        $longitude = null;
+        if(isset($location)){
+            $locationSplit = explode(',',$location);
+            $latitude = $locationSplit[0];
+            $longitude = $locationSplit[1];
+        }
+        else{
+            $g = geoip($ip = $request->ip());
+            $latitude = $g->lat;
+            $longitude = $g->lon;
+        }
+        //dd($latitude,$longitude);
         $user = Auth::user();
         $grills = Grill::all();
         return view('user.grills_near')->with('grills',$grills);
@@ -54,13 +68,17 @@ class GrillController extends Controller
         $request->validate([
             'model' => 'required',
             'image' => 'required|image',
-            'zipcode' => 'required|integer'
+            'zipcode' => 'required|integer',
+            'latitude' => 'required',
+            'longitude' => 'required'
         ]);
 
         $grill = new Grill();
         $grill->model = $request->model;
         $grill->description = $request->description;
         $grill->zipcode = $request->zipcode;
+        $grill->latitude = $request->latitude;
+        $grill->longitude = $request->longitude;
         $filename = basename($request->image->store('grills'));
         $grill->image = $filename;
         $grill->user_id = $renter->id;

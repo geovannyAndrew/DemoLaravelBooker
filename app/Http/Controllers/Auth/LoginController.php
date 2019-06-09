@@ -29,7 +29,7 @@ class LoginController extends Controller
     public function redirectTo(){
         $user = Auth::user(); 
         if($user->is_renter){
-            return route('renter.bookings');
+            return route('renter.bookings.index');
         }
         else if($user->is_user){
             return route('user.grills_near');

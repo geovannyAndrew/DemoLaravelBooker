@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="{{  $name_page or 'bb-page'}}">
     @php
         $authUser = Auth::user();
     @endphp
