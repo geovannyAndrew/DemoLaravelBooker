@@ -41,7 +41,8 @@ class GrillController extends Controller
         }
         $user = Auth::user();
         $coordinates = ['latitude' => $latitude, 'longitude' => $longitude];
-        $grills = Grill::isWithinDistance($coordinates,10)->get();
+        $radiusKm = config('grill_booking.radius_km_search_grills_user');
+        $grills = Grill::isWithinDistance($coordinates,$radiusKm)->get();
         return view('user.grills_near')->with('grills',$grills);
     }
 
