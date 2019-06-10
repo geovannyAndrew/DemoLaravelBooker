@@ -96,19 +96,22 @@ const grillsNearScope = {
     },
 
     tryGeolocateUser: function(){
-        if(navigator.geolocation){
-            $.LoadingOverlay('show');
-            navigator.geolocation.getCurrentPosition(this.getUserPosition);
+        if(location.protocol == 'https:' || location.host.indexOf('localhost')>-1){
+            if(navigator.geolocation){
+                $.LoadingOverlay('show');
+                navigator.geolocation.getCurrentPosition(this.getUserPosition);
+            }
+            else{
+                console.log("Geolocation is not supprted in this browser");
+            }
         }
-        else{
-            console.log("Geolocation is not supprted in this browser");
-        }
+        
+        
     },
 
     getUserPosition: function(position){
         $.LoadingOverlay('hide');
         let url = location.protocol + '//' + location.host + location.pathname;
-        console.log(url);
         url = url+'?location='+position.coords.latitude+','+position.coords.longitude;
         window.location.href = url;
     }
