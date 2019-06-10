@@ -29,20 +29,27 @@ class GrillController extends Controller
         $location = $request->location;
         $latitude = null;
         $longitude = null;
+        $grills = [];
+        $radiusKm = config('grill_booking.radius_km_search_grills_user');
         if(isset($location)){
             $locationSplit = explode(',',$location);
             $latitude = $locationSplit[0];
             $longitude = $locationSplit[1];
+            $coordinates = ['latitude' => $latitude, 'longitude' => $longitude];
+            $grills = Grill::isWithinDistance($coordinates,$radiusKm)->get();
         }
         else{
             $g = geoip($ip = $request->ip());
             $latitude = $g->lat;
             $longitude = $g->lon;
+            if($g->default){
+                $grills = Grill::all();
+            }
+            else{
+                $coordinates = ['latitude' => $latitude, 'longitude' => $longitude];
+                $grills = Grill::isWithinDistance($coordinates,$radiusKm)->get();
+            }
         }
-        $user = Auth::user();
-        $coordinates = ['latitude' => $latitude, 'longitude' => $longitude];
-        $radiusKm = config('grill_booking.radius_km_search_grills_user');
-        $grills = Grill::isWithinDistance($coordinates,$radiusKm)->get();
         return view('user.grills_near')->with('grills',$grills);
     }
 

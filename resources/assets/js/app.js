@@ -81,7 +81,6 @@ const grillsNearScope = {
 
     checkIfUrlContainsLocation: function(){
         let url = window.location.href;
-        console.log(url);
         if(url.indexOf('?location=') == -1){
             this.tryGeolocateUser();
         }
