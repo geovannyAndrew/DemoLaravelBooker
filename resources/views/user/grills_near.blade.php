@@ -5,6 +5,7 @@
     <div class="row row-eq-height">
         <div class="col-md-8 align-baseline">
             <h1>Grills Near me</h1>
+            <span class="hide">{{ $type_geolocation }}</span>
         </div>
         <div class="col-md-4 text-right">
             <button title="Update your position" id="button_update_location" class="btn"><i class="glyphicon glyphicon-screenshot"></i></button>

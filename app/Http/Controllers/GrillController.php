@@ -31,12 +31,14 @@ class GrillController extends Controller
         $longitude = null;
         $grills = [];
         $radiusKm = config('grill_booking.radius_km_search_grills_user');
+        $typeGeolocation = 'none';
         if(isset($location)){
             $locationSplit = explode(',',$location);
             $latitude = $locationSplit[0];
             $longitude = $locationSplit[1];
             $coordinates = ['latitude' => $latitude, 'longitude' => $longitude];
             $grills = Grill::isWithinDistance($coordinates,$radiusKm)->get();
+            $typeGeolocation = 'browser-url';
         }
         else{
             $g = geoip($ip = $request->ip());
@@ -48,9 +50,10 @@ class GrillController extends Controller
             else{
                 $coordinates = ['latitude' => $latitude, 'longitude' => $longitude];
                 $grills = Grill::isWithinDistance($coordinates,$radiusKm)->get();
+                $typeGeolocation = 'client-ip';
             }
         }
-        return view('user.grills_near')->with('grills',$grills);
+        return view('user.grills_near')->with('grills',$grills)->with('type_geolocation',$typeGeolocation);
     }
 
     /**
