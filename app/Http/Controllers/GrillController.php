@@ -45,7 +45,7 @@ class GrillController extends Controller
             $latitude = $g->lat;
             $longitude = $g->lon;
             if($g->default){
-                $grills = Grill::all();
+                $grills = Grill::take(100)->get();
             }
             else{
                 $coordinates = ['latitude' => $latitude, 'longitude' => $longitude];

@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-12">
             <table class="table">
-                <thead>
+                <thead class="thead-dark">
                     <tr class="d-flex">
                         <th class="col-1">ID</th>
                         <th class="col-2">Model</th>

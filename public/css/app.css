@@ -1,5 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
+body #app > .container {
+  max-width: 1045px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body #app > .container .bb-form {
+  border-radius: 10px;
+  border: 1px solid gray;
+  background-color: white;
+  padding: 20px;
+}
+
+body #app > nav .navbar-header .navbar-brand {
+  text-transform: capitalize;
+}
+
 /*!
  * Bootstrap v3.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 Twitter, Inc.
@@ -8331,5 +8348,202 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+body.bb-detail-grill .card-grill {
+  border-radius: 10px;
+  border: 1px solid gray;
+  background-color: white;
+  padding: 20px;
+}
+
+body.bb-detail-grill .card-grill .card-body > div {
+  display: inline-block;
+  vertical-align: top;
+}
+
+body.bb-detail-grill .card-grill .card-body > div > h6 {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+body.bb-detail-grill .card-grill .card-body .image {
+  width: 30%;
+}
+
+body.bb-detail-grill .card-grill .card-body .image img {
+  max-width: 100%;
+}
+
+body.bb-detail-grill .card-grill .card-body .info {
+  width: 69%;
+  padding-left: 15px;
+}
+
+body.bb-detail-grill .bb-form {
+  margin-top: 15px;
+}
+
+body.bb-detail-grill .bb-form h3 {
+  text-align: center;
+  margin-top: 0;
+}
+
+body.bb-detail-grill .bb-form .form-group {
+  display: inline-block;
+  vertical-align: top;
+  width: 49.5%;
+}
+
+body.bb-detail-grill .bb-form .form-group > input {
+  width: 100%;
+}
+
+body.bb-detail-grill .bb-form .bb-submit {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.bb-create-grill .card .bb-form #button-submit {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+body.renter-bookings table {
+  width: 100%;
+}
+
+body.renter-bookings table thead tr td:nth-child(1),
+body.renter-bookings table thead tr th:nth-child(1),
+body.renter-bookings table tbody tr td:nth-child(1),
+body.renter-bookings table tbody tr th:nth-child(1) {
+  width: 10%;
+}
+
+body.renter-bookings table thead tr td:nth-child(2),
+body.renter-bookings table thead tr th:nth-child(2),
+body.renter-bookings table tbody tr td:nth-child(2),
+body.renter-bookings table tbody tr th:nth-child(2) {
+  width: 30%;
+}
+
+body.renter-bookings table thead tr td:nth-child(3),
+body.renter-bookings table thead tr th:nth-child(3),
+body.renter-bookings table tbody tr td:nth-child(3),
+body.renter-bookings table tbody tr th:nth-child(3) {
+  width: 30%;
+}
+
+body.renter-bookings table thead tr td:nth-child(4),
+body.renter-bookings table thead tr th:nth-child(4),
+body.renter-bookings table tbody tr td:nth-child(4),
+body.renter-bookings table tbody tr th:nth-child(4) {
+  width: 30%;
+}
+
+body.my-grills table {
+  width: 100%;
+}
+
+body.my-grills table thead tr td:nth-child(1),
+body.my-grills table thead tr th:nth-child(1),
+body.my-grills table tbody tr td:nth-child(1),
+body.my-grills table tbody tr th:nth-child(1) {
+  width: 5%;
+}
+
+body.my-grills table thead tr td:nth-child(2),
+body.my-grills table thead tr th:nth-child(2),
+body.my-grills table tbody tr td:nth-child(2),
+body.my-grills table tbody tr th:nth-child(2) {
+  width: 15%;
+}
+
+body.my-grills table thead tr td:nth-child(3),
+body.my-grills table thead tr th:nth-child(3),
+body.my-grills table tbody tr td:nth-child(3),
+body.my-grills table tbody tr th:nth-child(3) {
+  width: 30%;
+}
+
+body.my-grills table thead tr td:nth-child(4),
+body.my-grills table thead tr th:nth-child(4),
+body.my-grills table tbody tr td:nth-child(4),
+body.my-grills table tbody tr th:nth-child(4) {
+  width: 25%;
+}
+
+body.my-grills table thead tr td:nth-child(5),
+body.my-grills table thead tr th:nth-child(5),
+body.my-grills table tbody tr td:nth-child(5),
+body.my-grills table tbody tr th:nth-child(5) {
+  width: 20%;
+}
+
+body.my-grills table thead tr td:nth-child(6),
+body.my-grills table thead tr th:nth-child(6),
+body.my-grills table tbody tr td:nth-child(6),
+body.my-grills table tbody tr th:nth-child(6) {
+  width: 5%;
+}
+
+body.my-grills table thead tr td img,
+body.my-grills table thead tr th img,
+body.my-grills table tbody tr td img,
+body.my-grills table tbody tr th img {
+  width: auto;
+  max-width: 100%;
+  max-height: 50px;
+}
+
+body.bb-grills-near table {
+  width: 100%;
+}
+
+body.bb-grills-near table thead tr th:nth-child(1),
+body.bb-grills-near table thead tr td:nth-child(1),
+body.bb-grills-near table tbody tr th:nth-child(1),
+body.bb-grills-near table tbody tr td:nth-child(1) {
+  width: 5%;
+}
+
+body.bb-grills-near table thead tr th:nth-child(2),
+body.bb-grills-near table thead tr td:nth-child(2),
+body.bb-grills-near table tbody tr th:nth-child(2),
+body.bb-grills-near table tbody tr td:nth-child(2) {
+  width: 25%;
+}
+
+body.bb-grills-near table thead tr th:nth-child(3),
+body.bb-grills-near table thead tr td:nth-child(3),
+body.bb-grills-near table tbody tr th:nth-child(3),
+body.bb-grills-near table tbody tr td:nth-child(3) {
+  width: 30%;
+}
+
+body.bb-grills-near table thead tr th:nth-child(4),
+body.bb-grills-near table thead tr td:nth-child(4),
+body.bb-grills-near table tbody tr th:nth-child(4),
+body.bb-grills-near table tbody tr td:nth-child(4) {
+  width: 35%;
+}
+
+body.bb-grills-near table thead tr th:nth-child(5),
+body.bb-grills-near table thead tr td:nth-child(5),
+body.bb-grills-near table tbody tr th:nth-child(5),
+body.bb-grills-near table tbody tr td:nth-child(5) {
+  width: 5%;
+  text-align: center;
+}
+
+body.bb-grills-near table thead tr th img,
+body.bb-grills-near table thead tr td img,
+body.bb-grills-near table tbody tr th img,
+body.bb-grills-near table tbody tr td img {
+  width: auto;
+  max-width: 100%;
+  max-height: 50px;
 }
 

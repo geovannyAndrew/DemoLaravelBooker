@@ -1,0 +1,19 @@
+body{
+    #app{
+        >.container{
+            @include wrapper-content();
+
+            .bb-form{
+                @include card-detail();
+            }
+        }
+
+        >nav{
+            .navbar-header{
+                .navbar-brand{
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+}

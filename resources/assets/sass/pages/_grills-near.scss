@@ -1,0 +1,32 @@
+body.bb-grills-near{
+    table{
+        width: 100%;
+        thead,tbody{
+            tr{
+                th,td{
+                    &:nth-child(1){
+                        width:5%;
+                    }
+                    &:nth-child(2){
+                        width: 25%;
+                    }
+                    &:nth-child(3){
+                        width: 30%;
+                    }
+                    &:nth-child(4){
+                        width: 35%;
+                    }
+                    &:nth-child(5){
+                        width: 5%;
+                        text-align: center;
+                    }
+                    img{
+                        width: auto;
+                        max-width: 100%;
+                        max-height: 50px;
+                    }
+                }
+            }
+        }
+    }
+}

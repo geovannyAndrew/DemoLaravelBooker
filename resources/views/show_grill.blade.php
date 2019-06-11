@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['name_page'=>'bb-detail-grill'])
 
 @section('content')
 <div class="container">
@@ -7,26 +7,22 @@
             <h1>Grill #{{ $grill->id }}</h1>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card card-grill">
                 <div class="card-body">
-                    {!! Form::label('model', 'Model:') !!}
-                    <h4>{{ $grill->model }}</h4>
-                    <br>
-                    {!! Form::label('image', 'Image:') !!}
-                    <br>
-                    <img src="{{ $grill->url_image }}" alt="">
-                    <br>
-                    <br>
-                    {!! Form::label('description', 'Description:') !!}
-                    <br>
-                    <p>{{ $grill->description }}</p>
-                    <br>
-                    {!! Form::label('Renter', 'Renter:') !!}
-                    <h4>{{ $grill->renter->name }}</h4>
-                    <br>
+                    <div class="image">
+                        <h6>Image:</h6>
+                        <img src="{{ $grill->url_image }}" alt="">
+                    </div>
+                    <div class="info">
+                        <h6>Model:</h6>
+                        <p>{{ $grill->model }}</p>
+                        <h6>Description:</h6>
+                        <p>{{ $grill->description }}</p>
+                        <h6>Renter:</h6>
+                        <p>{{ $grill->renter->name }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,16 +42,20 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(['url' => route('user.grills.book',$grill->id),'method'=>'post','files' => false,'role' => 'form']) !!}
-                    {!! Form::label('date', 'Book for:') !!}
-                    <br>
-                    {!! Form::date('date', null,['min'=>date('Y-m-d'),'required'=>'required']) !!}
-                    <br>
-                    {!! Form::label('hours', 'Hours:') !!}
-                    <br>
-                    {!! Form::number('hours',null,['required'=>'required']) !!}
-                    <br>
-                    {!! Form::submit('Book',['class'=>'btn btn-success']) !!}
+                {!! Form::open(['url' => route('user.grills.book',$grill->id),'method'=>'post','files' => false,'role' => 'form', 'class'=>'bb-form']) !!}
+                    <h3>Booking Grill</h3>
+                    <div class="form-group">
+                        {!! Form::label('date', 'Book for:') !!}
+                        <br>
+                        {!! Form::date('date', null,['min'=>date('Y-m-d'),'required'=>'required']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('hours', 'Hours:') !!}
+                        <br>
+                        {!! Form::number('hours',null,['required'=>'required','min'=>0]) !!}
+                    </div>
+                    {!! Form::submit('Book',['class'=>'btn btn-success bb-submit']) !!}
+                    
                 {!! Form::close() !!}
             </div>
         </div>

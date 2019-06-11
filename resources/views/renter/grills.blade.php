@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['name_page'=>'my-grills'])
 
 @section('content')
 <div class="container">

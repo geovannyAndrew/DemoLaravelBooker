@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['name_page'=>'renter-bookings'])
 
 @section('content')
 <div class="container">
@@ -11,18 +11,18 @@
         <div class="col-md-12">
             <table class="table">
                 <thead>
-                    <tr class="d-flex">
-                        <th class="col-1">ID</th>
-                        <th class="col-2">Grill ID/Model</th>
-                        <th class="col-3">Reserved by</th>
-                        <th class="col-3">Reserved for/hours</th>
+                    <tr>
+                        <th>ID</th>
+                        <th>Grill ID/Model</th>
+                        <th>Reserved by</th>
+                        <th>Reserved for/hours</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($bookings as $booking)
-                    <tr class="d-flex">
-                        <td class="col-1">{{ $booking->id }}</td>
-                        <td class="col-2">
+                    <tr>
+                        <td>{{ $booking->id }}</td>
+                        <td>
                             <a href="{{ route('grills.show',$booking->grill->id) }}">{{ $booking->grill->id }}<br>{{ $booking->grill->model }}</a>
                         </td>
                         <td>{{ $booking->user->name }}</td>

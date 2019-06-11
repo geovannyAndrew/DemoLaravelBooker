@@ -3,7 +3,16 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
-@import "variables";
+@import "common/variables";
+@import "common/mixins";
+@import "common/general";
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+//Pages
+@import "pages/detail-grill";
+@import "pages/create-grill";
+@import "pages/renter-bookings";
+@import "pages/my-grills";
+@import "pages/grills-near";

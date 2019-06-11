@@ -22,7 +22,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                {!! Form::open(['route' => 'renter.grills.store','method'=>'post','files' => true,'role' => 'form','id'=>'form_create_grill']) !!}
+                {!! Form::open(['route' => 'renter.grills.store','method'=>'post','files' => true,
+                    'role' => 'form','id'=>'form_create_grill','class'=>'bb-form']) !!}
                     {!! Form::label('model', 'Model:') !!}
                     {!! Form::text('model',null,['class'=>'form-control','required' => 'required']) !!}
                     <br>
